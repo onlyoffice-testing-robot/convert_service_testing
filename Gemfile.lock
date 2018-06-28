@@ -1,0 +1,111 @@
+GIT
+  remote: https://github.com/flaminestone/palladium.git
+  revision: 44fcd23b86f3317cfd89cd00c0b699d59d6e6146
+  specs:
+    palladium (0.3.1)
+
+GIT
+  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_documentserver_conversion_helper.git
+  revision: ffdba954c9999fd48cc6f30d6aca5689e01c54d2
+  specs:
+    onlyoffice_documentserver_conversion_helper (0.1.0)
+      jwt (~> 1)
+
+GIT
+  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_logger_helper.git
+  revision: 6719da93effe6152454f84ea1a3f7d95437d604b
+  specs:
+    onlyoffice_logger_helper (1.0.1)
+
+GIT
+  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_testrail_wrapper
+  revision: 8d5a2d04924ca956ba0b828128b5c480f8990e29
+  specs:
+    onlyoffice_testrail_wrapper (0.0.1)
+      activesupport (~> 4.0)
+      net-ping (~> 2)
+      onlyoffice_bugzilla_helper (~> 0.1)
+      onlyoffice_logger_helper (~> 1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.2.10)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    ast (2.4.0)
+    aws-sdk (2.11.76)
+      aws-sdk-resources (= 2.11.76)
+    aws-sdk-core (2.11.76)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.11.76)
+      aws-sdk-core (= 2.11.76)
+    aws-sigv4 (1.0.2)
+    concurrent-ruby (1.0.5)
+    diff-lcs (1.3)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.1)
+    jmespath (1.4.0)
+    jwt (1.5.6)
+    minitest (5.11.3)
+    net-ping (2.0.4)
+    onlyoffice_bugzilla_helper (0.2.0)
+    onlyoffice_file_helper (0.1.0)
+      onlyoffice_logger_helper (~> 1)
+      rubyzip (~> 1.0)
+    onlyoffice_s3_wrapper (0.1.1)
+      aws-sdk (~> 2.0)
+      onlyoffice_file_helper (~> 0.1)
+    parallel (1.12.1)
+    parser (2.5.1.0)
+      ast (~> 2.4.0)
+    powerpack (0.1.2)
+    rainbow (3.0.0)
+    rake (12.3.1)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    rubocop (0.57.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.9.0)
+    rubyzip (1.2.1)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    unicode-display_width (1.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  onlyoffice_documentserver_conversion_helper!
+  onlyoffice_logger_helper!
+  onlyoffice_s3_wrapper
+  onlyoffice_testrail_wrapper!
+  palladium!
+  rake
+  rspec
+  rubocop
+
+BUNDLED WITH
+   1.16.1
