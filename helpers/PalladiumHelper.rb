@@ -4,7 +4,7 @@ class PalladiumHelper
     @palladium = Palladium.new(host: StaticData::PALLADIUM_SERVER,
                                token: StaticData::PALLADIUM_TOKEN,
                                product: StaticData::PROJECT_NAME,
-                               plan:plan_name,
+                               plan: plan_name,
                                run: run_name)
   end
 
@@ -25,7 +25,7 @@ class PalladiumHelper
   end
 
   def get_result_sets(status)
-     @palladium.get_result_sets(status).map {|set| set['name']}
+    @palladium.get_result_sets(status).map { |set| set['name'] }
   end
 
   def get_status(example)
@@ -39,7 +39,7 @@ class PalladiumHelper
       result = :failed
       comment += "\n" + exception.to_s.gsub('to return ', "to return:\n").gsub(', got ', "\ngot:\n")
     elsif exception.nil?
-      result =  :passed
+      result = :passed
       comment += "\nOk"
     else
       result = :aborted
