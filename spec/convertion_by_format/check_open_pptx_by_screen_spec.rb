@@ -1,7 +1,7 @@
 require 'spec_helper'
 s3 = OnlyofficeS3Wrapper::AmazonS3Wrapper.new
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert PPTX')
-result_sets = palladium.get_result_sets(StaticData::DOCUMENTSERVER)
+result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 converter = OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER, jwt_key: StaticData::DOCUMENTSERVER_JWT)
 
 describe 'Convert docx files by convert service' do
