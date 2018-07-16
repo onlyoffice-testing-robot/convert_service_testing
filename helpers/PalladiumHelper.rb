@@ -31,6 +31,9 @@ class PalladiumHelper
   def get_status(example)
     exception = example.exception
     comment = ''
+    if example.pending
+      return [:pending, example.metadata[:execution_result].pending_message]
+    end
     # custom_fields = init_custom_fields(example)
     if exception.to_s.include?('got:') || exception.to_s.include?('expected:')
       result = :failed
