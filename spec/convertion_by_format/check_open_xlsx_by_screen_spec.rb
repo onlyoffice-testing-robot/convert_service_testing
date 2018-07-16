@@ -6,7 +6,7 @@ converter = OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(Static
 
 describe 'Convert docx files by convert service' do
   (s3.get_files_by_prefix('xlsx') - result_sets).each do |file_path|
-    it file_path do
+    it File.basename(file_path) do
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
