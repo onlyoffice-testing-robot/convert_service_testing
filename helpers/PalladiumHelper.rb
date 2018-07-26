@@ -2,7 +2,7 @@ require 'palladium'
 class PalladiumHelper
   def initialize(plan_name, run_name)
     @palladium = Palladium.new(host: StaticData::PALLADIUM_SERVER,
-                               token: StaticData::PALLADIUM_TOKEN,
+                               token: StaticData.get_palladium_token,
                                product: StaticData::PROJECT_NAME,
                                plan: plan_name,
                                run: run_name)

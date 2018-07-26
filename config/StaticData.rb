@@ -4,7 +4,6 @@ class StaticData
   POSITIVE_STATUSES = %w[passed passed_2 pending].freeze
 
   PALLADIUM_SERVER = 'palladium.teamlab.info'.freeze
-  PALLADIUM_TOKEN = File.read("#{ENV['HOME']}/.palladium/token")
   JWT_ENABLE = true
 
   def self.get_jwt_key
@@ -13,5 +12,13 @@ class StaticData
 
   def self.jwt_data_exist?
     File.exist?("#{ENV['HOME']}/.documentserver/documentserver_jwt")
+  end
+
+  def self.get_palladium_token
+    if File.exist?("#{ENV['HOME']}/.palladium/token")
+      File.read("#{ENV['HOME']}/.palladium/token")
+    else
+      ENV['PALLADIUM_TOKEN'].strip
+    end
   end
 end
