@@ -5,6 +5,13 @@ class StaticData
 
   PALLADIUM_SERVER = 'palladium.teamlab.info'.freeze
   PALLADIUM_TOKEN = File.read("#{ENV['HOME']}/.palladium/token")
+  JWT_ENABLE = true
 
-  DOCUMENTSERVER_JWT = File.read("#{ENV['HOME']}/.documentserver/documentserver_jwt")
+  def self.get_jwt_key
+    File.read("#{ENV['HOME']}/.documentserver/documentserver_jwt")
+  end
+
+  def self.jwt_data_exist?
+    File.exist?("#{ENV['HOME']}/.documentserver/documentserver_jwt")
+  end
 end

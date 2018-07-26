@@ -20,6 +20,17 @@ require_relative '../helpers/DocumentServerHelper'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  def converter
+    @converter ||= if !StaticData::JWT_ENABLE
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER)
+                   elsif ENV['DOCUMENT_SERVER_JWT']
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER, jwt_key: ENV['DOCUMENT_SERVER_JWT'])
+                   elsif StaticData.jwt_data_exist?
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER, jwt_key: StaticData.get_jwt_key.strip)
+                   else
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER)
+                   end
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
