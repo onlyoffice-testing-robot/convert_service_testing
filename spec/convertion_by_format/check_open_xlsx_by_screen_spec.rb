@@ -4,7 +4,7 @@ palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert XLSX'
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('xlsx')
 describe 'Convert docx files by convert service' do
-  (files - result_sets.map { |result_set| "xlsx/#{result_set}"}).each do |file_path|
+  (files - result_sets.map { |result_set| "xlsx/#{result_set}" }).each do |file_path|
     it File.basename(file_path) do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=37463' if file_path == 'xlsx/-10.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=37461' if file_path == 'xlsx/tendencia.xlsx'

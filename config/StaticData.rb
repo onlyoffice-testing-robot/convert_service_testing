@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class StaticData
-  PROJECT_NAME = 'Convert Service Testing'.freeze
-  DOCUMENTSERVER = 'https://doc-linux.teamlab.info'.freeze
+  PROJECT_NAME = 'Convert Service Testing'
+  DOCUMENTSERVER = 'https://doc-linux.teamlab.info'
   POSITIVE_STATUSES = %w[passed passed_2 pending].freeze
 
-  PALLADIUM_SERVER = 'palladium.teamlab.info'.freeze
+  PALLADIUM_SERVER = 'palladium.teamlab.info'
   JWT_ENABLE = true
 
   def self.get_jwt_key
@@ -15,10 +17,6 @@ class StaticData
   end
 
   def self.get_palladium_token
-    if File.exist?("#{ENV['HOME']}/.palladium/token")
-      File.read("#{ENV['HOME']}/.palladium/token")
-    else
-      ENV['PALLADIUM_TOKEN'].strip
-    end
+    File.read("#{ENV['HOME']}/.palladium/token")
   end
 end
