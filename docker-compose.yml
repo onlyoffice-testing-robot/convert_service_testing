@@ -1,0 +1,17 @@
+version: '2'
+services:
+  documentserver:
+    image: onlyoffice/4testing-documentserver-ie:latest
+    ports:
+    - "80:80"
+  testing_project:
+    build: ./
+    tty: true
+    environment:
+      - DOCUMENTSERVER=http://documentserver
+      - USE_JWT=no
+    depends_on:
+      - documentserver
+    command: rspec
+
+
