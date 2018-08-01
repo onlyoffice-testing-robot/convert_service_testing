@@ -2,11 +2,11 @@
 
 class StaticData
   PROJECT_NAME = 'Convert Service Testing'
-  DOCUMENTSERVER = 'https://doc-linux.teamlab.info'
+  DOCUMENTSERVER = ENV['DOCUMENTSERVER'] || 'https://doc-linux.teamlab.info'
   POSITIVE_STATUSES = %w[passed passed_2 pending].freeze
 
   PALLADIUM_SERVER = 'palladium.teamlab.info'
-  JWT_ENABLE = true
+  JWT_ENABLE = ENV['USE_JWT'] != 'no'
 
   def self.get_jwt_key
     File.read("#{ENV['HOME']}/.documentserver/documentserver_jwt")
@@ -17,6 +17,7 @@ class StaticData
   end
 
   def self.get_palladium_token
+    return ENV['PALLADIUM_TOKEN'] if ENV['PALLADIUM_TOKEN']
     File.read("#{ENV['HOME']}/.palladium/token")
   end
 end

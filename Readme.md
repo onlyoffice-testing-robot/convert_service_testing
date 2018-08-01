@@ -3,9 +3,23 @@
 This project need to test onlyoffice documentserver via convert service
 
 At first, change dockerfile
+* DOCUMENTSERVER - is a documentserver for testing. exemple: "https://doc-linux.teamlab.info"
 * S3_KEY - is a s3 public key
 * S3_PRIVATE_KEY - is a s3 private key
 * PALLADIUM_TOKEN - token for write result to palladium
-* DOCUMENTSERVER_JWT - documentserver jwt key(optional)
+* DOCUMENTSERVER_JWT - documentserver jwt key(optional. comment it for no using jwt)
 
-## And run tests: `docker run -it $(docker build -q .) rspec`
+And run tests: 
+
+`docker run -it $(docker build -q .) rspec`
+
+##Run documentserver and tests:
+
+At first, you need to change dockerfile
+* S3_KEY - is a s3 public key
+* S3_PRIVATE_KEY - is a s3 private key
+* PALLADIUM_TOKEN - token for write result to palladium
+
+And run docker compose
+
+`docker-compose up`
