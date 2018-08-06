@@ -10,8 +10,6 @@ services:
     environment:
       - DOCUMENTSERVER=http://documentserver
       - USE_JWT=no
-    depends_on:
-      - documentserver
-    command: rspec
+    command: ["./wait_for_documentserver_start.sh"]
 
 

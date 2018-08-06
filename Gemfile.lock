@@ -65,7 +65,6 @@ GEM
       ast (~> 2.4.0)
     powerpack (0.1.2)
     rainbow (3.0.0)
-    rake (12.3.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -103,7 +102,6 @@ DEPENDENCIES
   onlyoffice_s3_wrapper
   onlyoffice_testrail_wrapper!
   palladium!
-  rake
   rspec
   rubocop
 

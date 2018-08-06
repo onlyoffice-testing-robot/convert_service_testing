@@ -16,4 +16,5 @@ RUN mkdir /convert_service_testing
 WORKDIR /convert_service_testing
 ADD . /convert_service_testing
 RUN bundle install --without test development
+RUN chmod +x wait_for_documentserver_start.sh
 
