@@ -8,6 +8,9 @@ describe 'Convert docx files by convert service' do
     it File.basename(file_path) do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=37463' if file_path == 'xlsx/-10.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=37461' if file_path == 'xlsx/tendencia.xlsx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=29881' if file_path == 'xlsx/сравнение формул.xlsx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38603' if file_path == 'xlsx/test-workbook_tablestyleinfo.xlsx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38605' if file_path == 'xlsx/printCrash.xlsx'
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
