@@ -12,6 +12,7 @@ describe 'Convert docx files by convert service' do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38603' if file_path == 'xlsx/test-workbook_tablestyleinfo.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38605' if file_path == 'xlsx/printCrash.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38488' if file_path == 'xlsx/Smaller50MB.xlsx'
+      pending 'Timeout error' if file_path == 'xlsx/Consolidation_employees.xlsx'
       pending 'Timeout error' if file_path == 'xlsx/Mo drinks.xlsx'
       pending 'Timeout error' if file_path == 'xlsx/MODELO_planilhaControleFinanceiro.xlsx'
       pending 'Timeout error' if file_path == 'xlsx/70000strings.xlsx'
