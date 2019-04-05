@@ -17,5 +17,4 @@ WORKDIR /convert_service_testing
 ADD . /convert_service_testing
 RUN gem install bundler
 RUN bundle install --without test development
-RUN chmod +x wait_for_documentserver_start.sh
 
