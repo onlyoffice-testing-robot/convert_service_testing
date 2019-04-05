@@ -10,6 +10,6 @@ services:
     environment:
       - DOCUMENTSERVER=http://documentserver
       - USE_JWT=no
-    command: ["./wait_for_documentserver_start.sh"]
+    command: ["bash", "./wait_for_documentserver_start.sh"]
 
 
