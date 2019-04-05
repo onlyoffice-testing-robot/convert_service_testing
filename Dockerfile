@@ -1,4 +1,4 @@
-FROM ruby:2.4.3
+FROM ruby:2.6
 
 MAINTAINER Dmitriy.Rotatii "kvazilife@gmail.com@gmail.com"
 ENV S3_KEY ""
@@ -15,6 +15,7 @@ RUN echo $PALLADIUM_TOKEN > ~/.palladium/token
 RUN mkdir /convert_service_testing
 WORKDIR /convert_service_testing
 ADD . /convert_service_testing
+RUN gem install bundler
 RUN bundle install --without test development
 RUN chmod +x wait_for_documentserver_start.sh
 
