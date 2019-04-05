@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'onlyoffice_s3_wrapper'
 require 'onlyoffice_documentserver_conversion_helper'
 require 'onlyoffice_logger_helper/logger_helper'
