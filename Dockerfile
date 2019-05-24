@@ -1,6 +1,6 @@
 FROM ruby:2.6
 
-MAINTAINER Dmitriy.Rotatii "kvazilife@gmail.com@gmail.com"
+MAINTAINER Dmitriy.Rotatii "kvazilife@gmail.com"
 ENV S3_KEY ""
 ENV S3_PRIVATE_KEY ""
 ENV PALLADIUM_TOKEN ""
