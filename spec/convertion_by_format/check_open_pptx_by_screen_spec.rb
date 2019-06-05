@@ -6,10 +6,8 @@ files = s3.get_files_by_prefix('pptx')
 describe 'Convert docx files by convert service' do
   (files - result_sets.map { |result_set| "pptx/#{result_set}" }).each do |file_path|
     it File.basename(file_path) do
-      pending 'File without patterns. In will be added by editors. Not converted and its true' if file_path == 'pptx/empty_slides_layouts.pptx'
-      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=39745' if file_path == 'pptx/SCCM_TDM_Final.pptx'
-      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=39747' if file_path == 'pptx/e082409db8e2e706c92bb95f887c6881Presentation for RE week (A. Sargsyan 08).pptx'
-      pending 'Timeout error. File is too big(92mb)' if file_path == 'pptx/TouhouProject.pptx'
+      skip 'File without patterns. In will be added by editors. Not converted and its true' if file_path == 'pptx/empty_slides_layouts.pptx'
+      skip 'Timeout error. File is too big(92mb)' if file_path == 'pptx/TouhouProject.pptx'
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
