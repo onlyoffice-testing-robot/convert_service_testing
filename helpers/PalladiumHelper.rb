@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'palladium'
 class PalladiumHelper
   def initialize(plan_name, run_name)
@@ -32,6 +34,7 @@ class PalladiumHelper
     exception = example.exception
     comment = ''
     return [:pending, example.metadata[:execution_result].pending_message] if example.pending
+
     # custom_fields = init_custom_fields(example)
     if exception.to_s.include?('got:') || exception.to_s.include?('expected:')
       result = :failed

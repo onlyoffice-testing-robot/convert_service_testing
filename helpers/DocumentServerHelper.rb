@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocumentServerHelper
   def self.get_version
     get_version_from_sdk_all(StaticData::DOCUMENTSERVER + '/sdkjs/word/sdk-all.js')

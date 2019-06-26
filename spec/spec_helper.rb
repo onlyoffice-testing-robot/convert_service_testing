@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bundler/setup'
 require 'onlyoffice_s3_wrapper'
 require 'onlyoffice_documentserver_conversion_helper'

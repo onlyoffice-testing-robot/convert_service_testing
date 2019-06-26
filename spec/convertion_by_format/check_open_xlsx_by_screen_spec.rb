@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 s3 = OnlyofficeS3Wrapper::AmazonS3Wrapper.new
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert XLSX')

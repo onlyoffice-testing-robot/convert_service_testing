@@ -18,6 +18,7 @@ class StaticData
 
   def self.get_palladium_token
     return ENV['PALLADIUM_TOKEN'] if ENV['PALLADIUM_TOKEN']
+
     File.read("#{ENV['HOME']}/.palladium/token")
   end
 end
