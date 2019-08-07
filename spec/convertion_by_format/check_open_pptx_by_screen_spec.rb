@@ -8,6 +8,7 @@ describe 'Convert docx files by convert service' do
     it File.basename(file_path) do
       skip 'File without patterns. In will be added by editors. Not converted and its true' if file_path == 'pptx/empty_slides_layouts.pptx'
       skip 'Timeout error. File is too big(92mb)' if file_path == 'pptx/TouhouProject.pptx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42340' if file_path == 'pptx/Cerbai.pptx'
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
