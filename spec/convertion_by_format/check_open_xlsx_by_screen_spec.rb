@@ -15,6 +15,8 @@ describe 'Convert docx files by convert service' do
       skip 'Timeout error' if file_path == 'xlsx/Hasil Treasure 2010 Season 2.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=39491' if file_path == 'xlsx/Book 78.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42327' if file_path == 'xlsx/05.2016_items.xlsx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42334' if file_path == 'xlsx/_1-3-4-.xlsx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42334' if file_path == 'xlsx/Customer_Engagement_Workbook_3_0_FY08_External.xlsx'
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
