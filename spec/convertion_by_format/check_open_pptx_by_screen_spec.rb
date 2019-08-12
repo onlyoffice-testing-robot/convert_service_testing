@@ -12,8 +12,11 @@ describe 'Convert docx files by convert service' do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42343' if file_path == 'pptx/App-V_Delivering_Business_Value_Presentation.pptx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42343' if file_path == 'pptx/Iaea_hiro.pptx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42343' if file_path == 'pptx/Windows_7_Loadfest_Presentation.pptx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42343' if file_path == 'pptx/Электронная почта бизнес-класса.pptx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42343' if file_path == 'pptx/ICP_Firmenpraesentation_2010.pptx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42345' if file_path == 'pptx/CTDM.pptx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42377' if file_path == 'pptx/Duet_Architecture_and_Implementation_Best_Practices.pptx'
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42377' if file_path == 'pptx/Monetizing_Innovation.pptx'
       link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
