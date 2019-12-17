@@ -16,5 +16,5 @@ RUN mkdir /convert_service_testing
 WORKDIR /convert_service_testing
 ADD . /convert_service_testing
 RUN gem install bundler
-RUN bundle install --without test development
+RUN bundle config set without 'test development'
 
