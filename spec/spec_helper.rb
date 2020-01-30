@@ -7,7 +7,7 @@ require 'onlyoffice_logger_helper/logger_helper'
 require_relative '../config/StaticData'
 require_relative '../helpers/PalladiumHelper'
 require_relative '../helpers/DocumentServerHelper'
-
+require_relative '../helpers/file_helper'
 
 def s3
   @s3 ||= OnlyofficeS3Wrapper::AmazonS3Wrapper.new(bucket_name: 'conversion-testing-files', region: 'us-east-1')
@@ -16,9 +16,10 @@ end
 RSpec.configure do |config|
   def converter
     @converter ||= if !StaticData::JWT_ENABLE
-                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER)
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData.documentserver_url)
                    elsif StaticData.jwt_data_exist?
-                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData::DOCUMENTSERVER, jwt_key: StaticData.get_jwt_key.strip)
+                     OnlyofficeDocumentserverConversionHelper::ConvertFileData.new(StaticData.documentserver_url,
+                                                                                   jwt_key: StaticData.get_jwt_key.strip)
                    end
   end
 

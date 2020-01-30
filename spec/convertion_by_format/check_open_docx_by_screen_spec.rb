@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+FileHelper.clear_dir('files_tmp')
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert DOCX')
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('docx')
@@ -10,7 +11,8 @@ describe 'Convert docx files by convert service' do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=38299' if file_path == 'docx/ген_после_конвертирования_из_док.docx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=32793' if file_path == 'docx/Office Open XML Part 4 - Markup Language Reference.docx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42324' if file_path == 'docx/SUMMER_APPLICATION_PG_1.docx'
-      link = s3.get_object(file_path).presigned_url(:get, expires_in: 3600).split('?X-Amz-Algorithm')[0]
+      s3.download_file_by_name('docx/' + File.basename(file_path), './files_tmp')
+      link = StaticData.nginx_url + '/' + URI.encode(File.basename(file_path))
       response = converter.perform_convert(url: link, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
@@ -18,6 +20,7 @@ describe 'Convert docx files by convert service' do
   end
 
   after :each do |example|
+    FileHelper.clear_dir('files_tmp')
     palladium.add_result_and_log(example)
   end
 end
