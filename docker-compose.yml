@@ -1,15 +1,24 @@
-version: '2'
+version: '3'
 services:
   documentserver:
     image: onlyoffice/4testing-documentserver-ie:latest
     ports:
     - "80:80"
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./files_tmp/:/usr/share/nginx/html/
   testing_project:
     build: ./
     tty: true
+    depends_on:
+      - documentserver
+      - nginx
     environment:
       - DOCUMENTSERVER=http://documentserver
       - USE_JWT=no
     command: ["bash", "./wait_for_documentserver_start.sh"]
+    volumes:
+      - ./files_tmp/:/convert_service_testing/files_tmp/
 
 
