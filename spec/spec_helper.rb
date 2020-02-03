@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+require 'addressable'
+require 'uri'
 require 'onlyoffice_s3_wrapper'
 require 'onlyoffice_documentserver_conversion_helper'
 require 'onlyoffice_logger_helper/logger_helper'
