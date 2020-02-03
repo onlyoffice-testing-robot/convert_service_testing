@@ -6,6 +6,8 @@ services:
     - "80:80"
   nginx:
     image: nginx:latest
+    ports:
+      - "3000:80"
     volumes:
       - ./files_tmp/:/usr/share/nginx/html/
   testing_project:

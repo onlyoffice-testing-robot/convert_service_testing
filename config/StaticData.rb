@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StaticData
-
   PROJECT_NAME = 'Convert Service Testing'
   POSITIVE_STATUSES = %w[passed passed_2 pending].freeze
   PALLADIUM_SERVER = 'palladium.teamlab.info'

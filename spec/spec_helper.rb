@@ -10,6 +10,12 @@ require_relative '../config/StaticData'
 require_relative '../helpers/PalladiumHelper'
 require_relative '../helpers/DocumentServerHelper'
 require_relative '../helpers/file_helper'
+require_relative '../helpers/pretests_check'
+
+# ENV['DOCUMENTSERVER'] = ''
+# ENV['NGINX'] = ''
+
+PretestsCheck.pretests_check
 
 def s3
   @s3 ||= OnlyofficeS3Wrapper::AmazonS3Wrapper.new(bucket_name: 'conversion-testing-files', region: 'us-east-1')
