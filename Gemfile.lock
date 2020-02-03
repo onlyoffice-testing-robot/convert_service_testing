@@ -18,6 +18,14 @@ GIT
     onlyoffice_logger_helper (1.0.1)
 
 GIT
+  remote: https://github.com/onlyoffice-testing-robot/onlyoffice_s3_wrapper
+  revision: 17ae84e5da2e29e55128f154865637328d5b4626
+  specs:
+    onlyoffice_s3_wrapper (0.1.2)
+      aws-sdk-s3 (~> 1)
+      onlyoffice_file_helper (~> 0.1)
+
+GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_testrail_wrapper
   revision: f65733e1f142abff942251326739e404f1ac734e
   specs:
@@ -29,6 +37,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
     aws-eventstream (1.0.3)
     aws-partitions (1.269.0)
@@ -55,12 +65,10 @@ GEM
     onlyoffice_file_helper (0.1.0)
       onlyoffice_logger_helper (~> 1)
       rubyzip (~> 1.0)
-    onlyoffice_s3_wrapper (0.1.2)
-      aws-sdk-s3 (~> 1)
-      onlyoffice_file_helper (~> 0.1)
     parallel (1.19.1)
     parser (2.7.0.1)
       ast (~> 2.4.0)
+    public_suffix (4.0.3)
     rainbow (3.0.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -90,13 +98,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   onlyoffice_documentserver_conversion_helper!
   onlyoffice_logger_helper!
-  onlyoffice_s3_wrapper
+  onlyoffice_s3_wrapper!
   onlyoffice_testrail_wrapper!
   palladium!
   rspec
   rubocop
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

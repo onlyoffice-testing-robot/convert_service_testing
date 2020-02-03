@@ -11,8 +11,9 @@ describe 'Convert docx files by convert service' do
       skip 'File without patterns. In will be added by editors. Not converted and its true' if file_path == 'pptx/empty_slides_layouts.pptx'
       skip 'Timeout error. File is too big(92mb)' if file_path == 'pptx/TouhouProject.pptx'
       s3.download_file_by_name('pptx/' + File.basename(file_path), './files_tmp')
-      link = StaticData.nginx_url + '/' + URI.encode(File.basename(file_path))
-      response = converter.perform_convert(url: link, outputtype: 'png')
+      link = "#{StaticData.nginx_url}/#{File.basename(file_path)}"
+      uri = Addressable::URI.parse(link)
+      response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
     end
