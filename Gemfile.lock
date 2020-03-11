@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_testrail_wrapper
-  revision: f65733e1f142abff942251326739e404f1ac734e
+  revision: f484676664bd118bb8d2628e3ece4d738ecd68de
   specs:
     onlyoffice_testrail_wrapper (0.0.1)
       net-ping (~> 2)
