@@ -21,10 +21,9 @@ GIT
 
 GIT
   remote: https://github.com/onlyoffice-testing-robot/onlyoffice_testrail_wrapper
-  revision: f484676664bd118bb8d2628e3ece4d738ecd68de
+  revision: dde99fbc10d20ddd7dc392c7bf8efb6fa845dadd
   specs:
     onlyoffice_testrail_wrapper (0.0.1)
-      net-ping (~> 2)
       onlyoffice_bugzilla_helper (~> 0.1)
       onlyoffice_logger_helper (~> 1)
 
@@ -54,7 +53,6 @@ GEM
     jaro_winkler (1.5.4)
     jmespath (1.4.0)
     jwt (2.2.1)
-    net-ping (2.0.6)
     onlyoffice_bugzilla_helper (0.2.0)
     onlyoffice_file_helper (0.1.0)
       onlyoffice_logger_helper (~> 1)
