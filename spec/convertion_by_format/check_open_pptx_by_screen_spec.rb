@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './spec/spec_helper'
+require 'spec_helper'
 FileHelper.clear_dir('files_tmp')
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert PPTX')
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
@@ -16,7 +16,7 @@ describe 'Convert docx files by convert service' do
       response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
-      expect(ImageHelper.get_images_size(response[:url]) > StaticData::MIN_PPTX_IMAGE_SIZE).to be_truthy
+      expect(ImageHelper.get_image_size(response[:url]) > StaticData::MIN_PPTX_IMAGE_SIZE).to be_truthy
     end
   end
 
