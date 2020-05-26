@@ -25,7 +25,7 @@ describe 'Convert docx files by convert service' do
       response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
-      expect(ImageHelper.get_image_size(response[:url]) > StaticData::MIN_XLSX_IMAGES_SIZE).to be_truthy
+      expect(ImageHelper.get_image_size(response[:url])).to be > StaticData::MIN_DOCX_IMAGE_SIZE
     end
   end
 
