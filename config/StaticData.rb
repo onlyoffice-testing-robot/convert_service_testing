@@ -5,6 +5,9 @@ class StaticData
   POSITIVE_STATUSES = %w[passed passed_2 pending].freeze
   PALLADIUM_SERVER = 'palladium.teamlab.info'
   JWT_ENABLE = ENV['USE_JWT'] != 'no'
+  MIN_DOCX_IMAGE_SIZE = 5328
+  MIN_PPTX_IMAGE_SIZE = 3300
+  MIN_XLSX_IMAGES_SIZE = 5385
 
   TMP_FOLDER = 'files_tmp'
 
