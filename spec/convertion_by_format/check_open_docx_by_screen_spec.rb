@@ -5,6 +5,7 @@ FileHelper.clear_dir('files_tmp')
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert DOCX')
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('docx')
+data_file = nil
 describe 'Convert docx files by convert service' do
   (files - result_sets.map { |result_set| "docx/#{result_set}" }).each do |file_path|
     it File.basename(file_path) do
@@ -15,14 +16,15 @@ describe 'Convert docx files by convert service' do
       link = "#{StaticData.nginx_url}/#{File.basename(file_path)}"
       uri = Addressable::URI.parse(link)
       response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
+      data_file = ImageHelper.get_image_size(response[:url])
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
-      expect(ImageHelper.get_image_size(response[:url])).to be > StaticData::MIN_DOCX_IMAGE_SIZE
+      expect(data_file).to be > StaticData::MIN_DOCX_IMAGE_SIZE
     end
   end
 
   after :each do |example|
     FileHelper.clear_dir('files_tmp')
-    palladium.add_result_and_log(example)
+    palladium.add_result_and_log(example, data_file)
   end
 end

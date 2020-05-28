@@ -15,6 +15,7 @@ require_relative '../helpers/image_helper'
 
 # ENV['DOCUMENTSERVER'] = ''
 # ENV['NGINX'] = ''
+# ENV['USE_JWT'] = 'no'
 
 PretestsCheck.pretests_check
 
