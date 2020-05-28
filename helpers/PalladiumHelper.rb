@@ -18,16 +18,19 @@ class PalladiumHelper
     "#{@palladium.result_set_id}"
   end
 
-  def add_result_and_log(example)
-    result = add_result(example)
+  def add_result_and_log(example, file_data = nil)
+    result = add_result(example, file_data)
     OnlyofficeLoggerHelper.log("Test is #{result['status']['name']}")
     OnlyofficeLoggerHelper.log(get_result_set_link)
   end
 
-  def add_result(example)
+  def add_result(example, file_data = nil)
     name = example.metadata[:description]
     status, comment = get_status(example)
-    @palladium.set_result(name: name, description: comment, status: status)
+    if file_data
+      comment = { "subdescriber": [{ "title": 'image size (byte)', "value": file_data }], "describer": [{ "title": 'comment', "value": comment }] }
+    end
+    @palladium.set_result(name: name, description: comment.to_json, status: status)
   end
 
   def get_result_sets(status)
