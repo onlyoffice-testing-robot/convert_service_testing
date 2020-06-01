@@ -16,9 +16,9 @@ describe 'Convert docx files by convert service' do
       link = "#{StaticData.nginx_url}/#{File.basename(file_path)}"
       uri = Addressable::URI.parse(link)
       response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
-      data_file = ImageHelper.get_image_size(response[:url])
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
+      data_file = ImageHelper.get_image_size(response[:url])
       expect(data_file).to be > StaticData::MIN_DOCX_IMAGE_SIZE
     end
   end
