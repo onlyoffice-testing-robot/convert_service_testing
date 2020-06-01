@@ -18,19 +18,31 @@ class PalladiumHelper
     "#{@palladium.result_set_id}"
   end
 
-  def add_result_and_log(example, data_file = nil)
-    result = add_result(example, data_file)
+  def add_result_and_log(example, file_data = nil)
+    result = add_result(example, file_data)
     OnlyofficeLoggerHelper.log("Test is #{result['status']['name']}")
     OnlyofficeLoggerHelper.log(get_result_set_link)
   end
 
-  def add_result(example, data_file = nil)
+  def add_result(example, file_data = nil)
     name = example.metadata[:description]
+    status, comment = get_status_detailed_comment(example, file_data)
+    @palladium.set_result(name: name, description: comment, status: status)
+  end
+
+  # @@return [Array] adds additional information about the file size,
+  # otherwise returns a standard comment.
+  # Information can be added using the new
+  # element of the "subdescriber" array.
+  # Example:
+  # comment[:subdescriber] = [{"title": 'info', "value": 'info value'},{},...]
+  def get_status_detailed_comment(example, file_data = nil)
     status, comment = get_status(example)
-    if data_file
-      comment = { "subdescriber": [{ "title": 'image size (byte)', "value": data_file }], "describer": [{ "title": 'comment', "value": comment }] }
+    if file_data
+      comment = { "describer": [{ "title": 'comment', "value": comment }] }
+      comment[:subdescriber] = [{ "title": 'image size (byte)', "value": file_data }]
     end
-    @palladium.set_result(name: name, description: comment.to_json, status: status)
+    [status, comment.to_json]
   end
 
   def get_result_sets(status)
