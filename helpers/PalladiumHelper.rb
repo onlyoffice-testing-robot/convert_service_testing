@@ -18,16 +18,34 @@ class PalladiumHelper
     "#{@palladium.result_set_id}"
   end
 
-  def add_result_and_log(example)
-    result = add_result(example)
+  def add_result_and_log(example, file_data = nil)
+    result = add_result(example, file_data)
     OnlyofficeLoggerHelper.log("Test is #{result['status']['name']}")
     OnlyofficeLoggerHelper.log(get_result_set_link)
   end
 
-  def add_result(example)
+  def add_result(example, file_data = nil)
     name = example.metadata[:description]
-    status, comment = get_status(example)
+    status, comment = get_status_detailed_comment(example, file_data)
     @palladium.set_result(name: name, description: comment, status: status)
+  end
+
+  # Adds additional information about the file size
+  # @param
+  #   example [Hash] rspec data
+  #   file_data [Integer] Image size
+  # @note Information can be added using the new element of the "subdescriber" array.
+  # @example status, comment = get_status_detailed_comment(example, file_data)
+  # @return
+  #   [status] test status
+  #   [comment.to_json] comment about test status and image size
+  def get_status_detailed_comment(example, image_size = nil)
+    status, comment = get_status(example)
+    if image_size
+      comment = { "describer": [{ "title": 'comment', "value": comment }] }
+      comment[:subdescriber] = [{ "title": 'image size (byte)', "value": image_size }]
+    end
+    [status, comment.to_json]
   end
 
   def get_result_sets(status)
