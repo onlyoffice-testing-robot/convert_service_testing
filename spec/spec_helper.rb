@@ -11,6 +11,7 @@ require_relative '../helpers/PalladiumHelper'
 require_relative '../helpers/DocumentServerHelper'
 require_relative '../helpers/file_helper'
 require_relative '../helpers/pretests_check'
+require_relative '../helpers/image_helper'
 
 # ENV['DOCUMENTSERVER'] = ''
 # ENV['NGINX'] = ''
