@@ -30,17 +30,20 @@ class PalladiumHelper
     @palladium.set_result(name: name, description: comment, status: status)
   end
 
-  # @@return [Array] adds additional information about the file size,
-  # otherwise returns a standard comment.
-  # Information can be added using the new
-  # element of the "subdescriber" array.
-  # Example:
-  # comment[:subdescriber] = [{"title": 'info', "value": 'info value'},{},...]
-  def get_status_detailed_comment(example, file_data = nil)
+  # Adds additional information about the file size
+  # @param
+  #   example [Hash] rspec data
+  #   file_data [Integer] Image size
+  # @note Information can be added using the new element of the "subdescriber" array.
+  # @example status, comment = get_status_detailed_comment(example, file_data)
+  # @return
+  #   [status] test status
+  #   [comment.to_json] comment about test status and image size
+  def get_status_detailed_comment(example, image_size = nil)
     status, comment = get_status(example)
-    if file_data
+    if image_size
       comment = { "describer": [{ "title": 'comment', "value": comment }] }
-      comment[:subdescriber] = [{ "title": 'image size (byte)', "value": file_data }]
+      comment[:subdescriber] = [{ "title": 'image size (byte)', "value": image_size }]
     end
     [status, comment.to_json]
   end
