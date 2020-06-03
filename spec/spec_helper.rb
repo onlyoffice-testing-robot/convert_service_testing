@@ -43,3 +43,13 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+# Method returns uri taking the path to the file
+# @param [String] Accepts relative path to file
+# @return [String] URI address file in nginx
+# @note Changes the name of a temporary file
+def file_uri(file_path)
+  tmp_name = FileHelper.file_rename(File.basename(file_path))
+  link = "#{StaticData.nginx_url}/#{tmp_name}"
+  Addressable::URI.parse(link).normalize.to_s
+end

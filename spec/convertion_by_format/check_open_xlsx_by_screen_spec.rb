@@ -21,9 +21,7 @@ describe 'Convert docx files by convert service' do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42334' if file_path == 'xlsx/_1-3-4-.xlsx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42334' if file_path == 'xlsx/Customer_Engagement_Workbook_3_0_FY08_External.xlsx'
       s3.download_file_by_name('xlsx/' + File.basename(file_path), './files_tmp')
-      link = "#{StaticData.nginx_url}/#{File.basename(file_path)}"
-      uri = Addressable::URI.parse(link)
-      response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
+      response = converter.perform_convert(url: file_uri(file_path), outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
       image_size = ImageHelper.get_image_size(response[:url])

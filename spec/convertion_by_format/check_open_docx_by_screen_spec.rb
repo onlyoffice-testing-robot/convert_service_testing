@@ -13,9 +13,7 @@ describe 'Convert docx files by convert service' do
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=32793' if file_path == 'docx/Office Open XML Part 4 - Markup Language Reference.docx'
       pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=42324' if file_path == 'docx/SUMMER_APPLICATION_PG_1.docx'
       s3.download_file_by_name('docx/' + File.basename(file_path), './files_tmp')
-      link = "#{StaticData.nginx_url}/#{File.basename(file_path)}"
-      uri = Addressable::URI.parse(link)
-      response = converter.perform_convert(url: uri.normalize.to_s, outputtype: 'png')
+      response = converter.perform_convert(url: file_uri(file_path), outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
       image_size = ImageHelper.get_image_size(response[:url])
