@@ -16,7 +16,7 @@ describe 'Convert docx files by convert service' do
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
       image_size = ImageHelper.get_image_size(response[:url])
-      expect(image_size).to be > StaticData::MIN_DOCX_IMAGE_SIZE
+      expect(image_size).to be > StaticData::MIN_PPTX_IMAGE_SIZE
     end
   end
 
