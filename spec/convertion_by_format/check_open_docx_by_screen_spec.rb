@@ -6,7 +6,8 @@ palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert DOCX'
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('docx')
 describe 'Convert docx files by convert service' do
-  before(:each) do
+
+  before do
     @image_size = nil
   end
   (files - result_sets.map { |result_set| "docx/#{result_set}" }).each do |file_path|

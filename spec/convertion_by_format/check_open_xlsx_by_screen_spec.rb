@@ -5,9 +5,9 @@ FileHelper.clear_dir('files_tmp')
 palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert XLSX')
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('xlsx')
-image_size = nil
 describe 'Convert docx files by convert service' do
-  before(:each) do
+
+  before do
     @image_size = nil
   end
   (files - result_sets.map { |result_set| "xlsx/#{result_set}" }).each do |file_path|
@@ -34,6 +34,6 @@ describe 'Convert docx files by convert service' do
 
   after :each do |example|
     FileHelper.clear_dir('files_tmp')
-      palladium.add_result_and_log(example, @image_size)
+    palladium.add_result_and_log(example, @image_size)
   end
 end
