@@ -11,7 +11,7 @@ class ImageHelper
   # @return [Integer] size image
   def self.get_image_size(url)
     Tempfile.create('images-') do |tmpfile|
-      binary_image = URI.open(URI.parse(url), 'r:binary').read
+      binary_image = URI.parse(url).open { |io| io.string.force_encoding Encoding::BINARY }
       tmpfile.binmode.write binary_image
       tmpfile.size
     end
