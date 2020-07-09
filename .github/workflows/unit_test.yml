@@ -1,24 +1,17 @@
 name: Unit_test
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+on: [push]
 jobs:
   test:
-
     runs-on: ubuntu-18.04
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
     - name: Install dependencies
-      run: bundle install
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
     - name: Run tests
       run: rspec ./units/test_helpers/test_image_helper_spec.rb --default-path ./units
-      shell: bash
