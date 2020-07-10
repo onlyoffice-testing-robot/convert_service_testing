@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require '../spec_helper'
-
 describe ImageHelper do
   it 'add a file smaller than 10 KB' do
     url_image = 'https://user-images.githubusercontent.com/60688343/86939678-8c12bb80-c14a-11ea-97d4-e07c6e779b8a.png'
