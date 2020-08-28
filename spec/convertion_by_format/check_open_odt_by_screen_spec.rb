@@ -12,6 +12,7 @@ describe 'Convert odt files by convert service' do
   end
   (files - result_sets.map { |result_set| "odt/#{result_set}" }).each do |file_path|
     it File.basename(file_path) do
+      pending 'https://bugzilla.onlyoffice.com/show_bug.cgi?id=46358' if file_path == 'odt/0100GS3GettingStartedOOo3.odt'
       s3.download_file_by_name('odt/' + File.basename(file_path), './files_tmp')
       response = converter.perform_convert(url: file_uri(file_path), outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
