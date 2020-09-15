@@ -6,7 +6,6 @@ palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert ODT')
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('odt')
 describe 'Convert odt files by convert service' do
-
   before do
     @image_size = nil
   end
