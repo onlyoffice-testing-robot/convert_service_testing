@@ -3,3 +3,5 @@ inherit_from: .rubocop_todo.yml
 AllCops:
     NewCops: enable
 
+Metrics/BlockLength:
+    Max: 30
