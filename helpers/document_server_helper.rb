@@ -2,7 +2,7 @@
 
 class DocumentServerHelper
   def self.get_version
-    get_version_from_sdk_all(StaticData.documentserver_url + '/sdkjs/word/sdk-all.js')
+    get_version_from_sdk_all("#{StaticData.documentserver_url}/sdkjs/word/sdk-all.js")
   end
 
   def self.get_version_from_sdk_all(sdk_all_link)

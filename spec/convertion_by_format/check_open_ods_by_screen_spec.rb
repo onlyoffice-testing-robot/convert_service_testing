@@ -11,7 +11,7 @@ describe 'Convert ods files by convert service' do
   end
   (files - result_sets.map { |result_set| "ods/#{result_set}" }).each do |file_path|
     it File.basename(file_path) do
-      s3.download_file_by_name('ods/' + File.basename(file_path), './files_tmp')
+      s3.download_file_by_name(file_path, './files_tmp')
       response = converter.perform_convert(url: file_uri(file_path), outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
