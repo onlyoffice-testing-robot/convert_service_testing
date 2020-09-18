@@ -6,34 +6,10 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'spec/convertion_by_format/check_open_docx_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_odp_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_ods_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_odt_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_pptx_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_xlsx_by_screen_spec.rb'
-
 # Offense count: 1
 # Configuration parameters: IgnoredMethods.
 Metrics/AbcSize:
   Max: 28
-
-# Offense count: 1
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-# ExcludedMethods: refine
-Metrics/BlockLength:
-  Max: 28
-
-# Offense count: 2
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 17
 
 # Offense count: 4
 Naming/AccessorMethodName:
@@ -57,25 +33,6 @@ Style/Documentation:
     - 'config/StaticData.rb'
     - 'helpers/document_server_helper.rb'
     - 'helpers/palladium_helper.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantFileExtensionInRequire:
-  Exclude:
-    - 'units/spec_helper.rb'
-
-# Offense count: 9
-# Cop supports --auto-correct.
-Style/StringConcatenation:
-  Exclude:
-    - 'helpers/document_server_helper.rb'
-    - 'helpers/palladium_helper.rb'
-    - 'helpers/pretests_check.rb'
-    - 'spec/convertion_by_format/check_open_docx_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_ods_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_odt_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_pptx_by_screen_spec.rb'
-    - 'spec/convertion_by_format/check_open_xlsx_by_screen_spec.rb'
 
 # Offense count: 8
 # Cop supports --auto-correct.
