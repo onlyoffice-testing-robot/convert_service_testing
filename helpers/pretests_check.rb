@@ -17,7 +17,7 @@ class PretestsCheck
   end
 
   def self.documentserver_available?
-    OnlyofficeLoggerHelper.log('Check documentserver is available ' + StaticData.documentserver_url)
+    OnlyofficeLoggerHelper.log("Check documentserver is available #{StaticData.documentserver_url}")
     status = request_to(StaticData.documentserver_url)
 
     OnlyofficeLoggerHelper.log("Documentserver on #{StaticData.documentserver_url} is unavailable") unless status

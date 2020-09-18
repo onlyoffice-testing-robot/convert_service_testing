@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../helpers/image_helper.rb'
+require_relative '../helpers/image_helper'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

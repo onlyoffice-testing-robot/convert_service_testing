@@ -6,7 +6,6 @@ palladium = PalladiumHelper.new(DocumentServerHelper.get_version, 'Convert PPTX'
 result_sets = palladium.get_result_sets(StaticData::POSITIVE_STATUSES)
 files = s3.get_files_by_prefix('pptx')
 describe 'Convert docx files by convert service' do
-
   before do
     @image_size = nil
   end
@@ -14,7 +13,7 @@ describe 'Convert docx files by convert service' do
     it File.basename(file_path) do
       skip 'File without patterns. In will be added by editors. Not converted and its true' if file_path == 'pptx/empty_slides_layouts.pptx'
       skip 'Timeout error. File is too big(92mb)' if file_path == 'pptx/TouhouProject.pptx'
-      s3.download_file_by_name('pptx/' + File.basename(file_path), './files_tmp')
+      s3.download_file_by_name(file_path, './files_tmp')
       response = converter.perform_convert(url: file_uri(file_path), outputtype: 'png')
       expect(response[:url].nil?).to be_falsey
       expect(response[:url].empty?).to be_falsey
