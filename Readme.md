@@ -1,3 +1,5 @@
+# This project is deprecated. Use [ONLYOFFICE-QA/convert-service-testing](https://github.com/ONLYOFFICE-QA/convert-service-testing) instead
+
 ## Convert service testing
 
 This project need to test onlyoffice documentserver via convert service
